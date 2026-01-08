@@ -24,19 +24,7 @@ namespace MicroTof
     const float delta = x - in_min;
     return (delta * rise) / run + out_min;
   }
-
-  /* int audioTaperToLinear(int value, float maximum)
-  {
-    float normalized = (float)value / maximum; // Normalize to 0.0–1.0
-
-    // Apply a correction curve to linearize (tweak the exponent as needed)
-    float corrected = pow(normalized, 1.8); // 1.8 is typical for audio taper
-
-    // Rescale back to 0–1023 or any target range
-    return floor(corrected * maximum);
-  } */
   
-
   int wrap(int value, int min, int max_exclusive)
   {
     int range = max_exclusive - min;
