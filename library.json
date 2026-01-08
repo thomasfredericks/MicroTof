@@ -1,11 +1,11 @@
 {
-  "name": "MicroOsc",
-  "version": "0.2.0",
-  "description": "Simple and lightweight Open Sound Control (OSC) library",
-  "keywords": "Communication",
+  "name": "MicroTof",
+  "version": "0.0.1",
+  "description": "Utility library for Arduino Micro Libraries",
+  "keywords": "Utility",
   "repository": {
     "type": "git",
-    "url": "https://github.com/thomasfredericks/MicroOsc.git"
+    "url": "https://github.com/thomasfredericks/MicroTof.git"
   },
   "authors": [
     {
@@ -15,9 +15,8 @@
     }
   ],
   "license": "MIT",
-  "homepage": "https://github.com/thomasfredericks/MicroOsc",
+  "homepage": "https://github.com/thomasfredericks/MicroTof",
   "dependencies": [
-    "MicroSlip"
   ],
   "frameworks": "*",
   "platforms": "*"
