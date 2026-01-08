@@ -4,6 +4,7 @@
 #define __MICRO_TOF_H__
 
 #include <Arduino.h>
+#include <cmath> // for fmodf
 
 #ifndef MICRO_TOF_COUNT_OF_ARRAY
 #define MICRO_TOF_COUNT_OF_ARRAY(X)  (sizeof(X) / sizeof(X[0]))
@@ -37,6 +38,22 @@ namespace MicroTof
 
     return result + min;
   }
+
+
+
+float wrapf(float value, float min, float max_exclusive)
+{
+    float range = max_exclusive - min;
+    if (range == 0.0f)
+        return min; // avoid division by zero
+
+    float result = fmodf(value - min, range);
+    if (result < 0.0f)
+        result += range; // ensure positive result
+
+    return result + min;
+}
+
 
   // Deterministic random (fast hash)
   uint32_t randomHash32(uint32_t x)
