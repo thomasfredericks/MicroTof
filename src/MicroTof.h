@@ -26,9 +26,9 @@ namespace MicroTof
     return (delta * rise) / run + out_min;
   }
   
-  int wrap(int value, int min, int max_exclusive)
+  int wrapExclusive(int value, int min, int max)
   {
-    int range = max_exclusive - min;
+    int range = max - min;
     if (range == 0)
       return min; // avoid division by zero
 
@@ -38,12 +38,24 @@ namespace MicroTof
 
     return result + min;
   }
+   
+// Clamps 'value' to the range [min, max_exclusive-1]
+int32_t clampExclusive(int32_t value, int32_t min, int32_t max) {
+    if (value <= min) return min;
+    if (value >= max) return max - 1;
+    return value;
+}
 
+// Clamps 'value' to the range [min, max]
+float clampInclusivef(float value, float min, float max) {
+    if (value <= min) return min;
+    if (value >= max) return max;
+    return value;
+}
 
-
-float wrapf(float value, float min, float max_exclusive)
+float wrapExclusivef(float value, float min, float max)
 {
-    float range = max_exclusive - min;
+    float range = max - min;
     if (range == 0.0f)
         return min; // avoid division by zero
 
