@@ -6,11 +6,6 @@ Git URL : https://github.com/thomasfredericks/MicroCommon
 
 Namespace: `Micro`
 
-# Micro Common Library Documentation
-
-Namespace: `Micro`
-
-
 
 ## Functions
 
