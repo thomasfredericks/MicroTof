@@ -101,6 +101,7 @@ Holds a key-pointer pair.
   - `Bind(key, pointer)` – Initializes the pair with a key (const char*) and pointer (T*).
   - `Bind()` – Default constructor.
 
+### `Micro::Binder<T>`
 
 Stores a collection of `[key, pointer]` pairs and provides access.
 
