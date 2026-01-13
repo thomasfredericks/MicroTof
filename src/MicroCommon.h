@@ -121,7 +121,7 @@ namespace Micro
           };
 
     // get pointer to the stored value by key
-    T get(const char *key)
+    T getPointer(const char *key)
     {
       for (size_t i = 0; i < count_; ++i)
       {
@@ -132,11 +132,18 @@ namespace Micro
     }
 
     // get pointer by index
-    T get(size_t index)
+    T getPointer(size_t index)
     {
       if (index >= count_)
         return nullptr;
       return pairs_[index].pointer_;
+    }
+    
+    // get pointer by index
+    const char * getKey(size_t index) {
+      if (index >= count_)
+        return nullptr;
+      return pairs_[index].key_;
     }
 
     size_t getCount() const { return count_; }
