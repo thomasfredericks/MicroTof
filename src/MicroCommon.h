@@ -139,7 +139,7 @@ namespace Micro
       return pairs_[index].pointer_;
     }
     
-    // get pointer by index
+    // get key by index
     const char * getKey(size_t index) {
       if (index >= count_)
         return nullptr;
