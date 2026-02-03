@@ -63,7 +63,7 @@ uint32_t microRandomHash32(uint32_t x)
 // ==============================================
 
 // Random float between 0.0 and 1.0
-float microRand01(uint32_t x)
+float microRandom01(uint32_t x)
 {
   return microRandomHash32(x) / 4294967295.0f;
 }
@@ -75,8 +75,8 @@ float microInterpolatedRandom01(float x)
 {
   int xi = floor(x);
   float xf = x - xi;
-  float a = microRand01(xi);
-  float b = microRand01(xi + 1);
+  float a = microRandom01(xi);
+  float b = microRandom01(xi + 1);
   return a * (1 - xf) + b * xf;
 }
 
