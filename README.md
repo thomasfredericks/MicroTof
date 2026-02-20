@@ -4,71 +4,64 @@ Utility library for Arduino Micro Libraries
 
 Git URL : https://github.com/thomasfredericks/MicroCommon
 
+Namespace: global
+
 ## Functions
 
-### `microModulo(value, modulus)`
+### microModulo
 
-Returns the modulus of `value` wrapped to always be non-negative.
+```cpp
+ int32_t value = microModulo( value, modulus);
+```
+Returns `value` (`int32_t`) modulo `modulus` (`int32_t`), ensuring the result is always non-negative even if `value` is negative.
 
-- Parameters:
-  - `value`: Value to wrap (`int32_t`)
-  - `modulus`: Modulus (`int32_t`)
-- Returns:
-  - The wrapped value (`int32_t`)
+### microWrap
 
-### `microWrap(value, min, max)`
+```cpp
+ int32_t value = microWrap( value, min, max);
+```
+Wraps `value` (`int32_t`) to the range [`min` (`int32_t`), `max` (`int32_t`)], inclusive of `max`, using modular arithmetic.
 
-Wraps `value` to the inclusive range `[min, max]`.
+### microClamp<T>
 
-- Parameters:
-  - `value`: Value to wrap (`int32_t`)
-  - `min`: Minimum value (`int32_t`)
-  - `max`: Maximum value (`int32_t`)
-- Returns:
-  - The wrapped value (`int32_t`)
+```cpp
+ T value = microClamp<T>( value, min, max);
+```
+Clamps `value` (`T`) to the range [`min` (`T`), `max` (`T`)], returning `max` (`T`) if `value` exceeds it and `value` itself otherwise.
 
-### `microClamp<T>(value, min, max)`
+### microMap<T>
 
-Clamps `value` to the inclusive range `[min, max]`.
+```cpp
+ T value = microMap<T>( value, in_min, in_max, out_min, out_max);
+```
+Maps `value` (`T`) from the input range [`in_min` (`T`), `in_max` (`T`)] to the output range [`out_min` (`T`), `out_max` (`T`)], linearly scaling the value.
 
-- Template Parameter: T – Type of value, min, and max
-- Parameters:
-  - `value`: Value to clamp (`T`)
-  - `min`: Minimum value (`T`)
-  - `max`: Maximum value (`T`)
-- Returns:
-  - The clamped value (`T`)
+### microRandomDeterministic32
 
-### `microMap<T>(value, in_min, in_max, out_min, out_max)`
+```cpp
+ uint32_t value = microRandomDeterministic32( x);
+```
+Generates a deterministic pseudo-random `uint32_t` value from input `x` (`uint32_t`) using a fast hash function.
 
-Maps `value` from the range `[in_min, in_max]` to `[out_min, out_max]`.
+### microRandom01
 
-- Template Parameter: T – Type of input and output values
-- Parameters:
-  - `value`: Value to map (`T`)
-  - `in_min`: Input range minimum (`T`)
-  - `in_max`: Input range maximum (`T`)
-  - `out_min`: Output range minimum (`T`)
-  - `out_max`: Output range maximum (`T`)
-- Returns:
-  - The mapped value (`T`)
+```cpp
+ float value = microRandom01( x);
+```
+Generates a deterministic pseudo-random `float` between 0.0 and 1.0 from input `x` (`uint32_t`) using a fast hash function.
 
-### `microRandomHash32(x)`
+### microRandomInterpolated01
 
-Generates a deterministic 32-bit random hash from `x`.
+```cpp
+ float value = microRandomInterpolated01( x);
+```
+Generates a deterministic pseudo-random `float` between 0.0 and 1.0 for `x` (`float`) by using the integer part of `x` as a seed and linearly interpolating between `x` and `x+1` using the fractional part.
 
-- Parameters:
-  - `x`: Input seed (`uint32_t`)
-- Returns:
-  - Randomized hash (`uint32_t`)
+### microHashFnv1a
 
-### `microRand01(x)`
-
-Generates a deterministic random float in the range `[0.0, 1.0]` based on `x`.
-
-- Parameters:
-  - `x`: Input seed (`uint32_t`)
-- Returns:
-  - Ran
+```cpp
+ uint32_t value = microHashFnv1a( s);
+```
+Computes a 32-bit FNV-1a hash of the null-terminated string `s` (`const char *`), returning the hash as `uint32_t`.
 
 
