@@ -5,27 +5,27 @@
 
 #include <Arduino.h>
 
-constexpr int32_t microModulo(int32_t value, int32_t modulus)
+constexpr inline int32_t microModulo(int32_t value, int32_t modulus)
 {
   return (value % modulus + modulus) % modulus;
 }
 
 // Wrap 'value' to the range [min, max] (max inclusive)
-constexpr int32_t microWrap(int32_t value, int32_t min, int32_t max)
+constexpr inline int32_t microWrap(int32_t value, int32_t min, int32_t max)
 {
   return microModulo(value - min, max - min + 1) + min;
 }
 
 // Clamps 'value' to the range [min, max] (max inclusive)
 template <typename T>
-constexpr T microClamp(T value, T min, T max)
+constexpr inline T microClamp(T value, T min, T max)
 {
     return (value >= max ? max : value);
 }
 
 // Maps 'value' from [in_min, in_max] to [out_min, out_max]
 template <typename T>
-constexpr T microMap(T value, T in_min, T in_max, T out_min, T out_max)
+constexpr inline T microMap(T value, T in_min, T in_max, T out_min, T out_max)
 {
     return (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
